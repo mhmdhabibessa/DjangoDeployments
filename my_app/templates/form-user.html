@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: antiquewhite; padding: 20px; box-shadow: 10px 10px 5px 20px black;">
+        <div style="background-color: rgb(171, 105, 24);padding: 20px;">
+            <form action="/create_user" method="post">
+                {% csrf_token %}
+                <label for="first_name">First Name:</label><br>
+                <input type="text" id="title" name="first_name"><br>
+                <label for="last_name">last Name:</label><br>
+                <input type="text" id="last_name" name="last_name"><br>
+                <label for="email">email:</label><br>
+                <input type="text" id="age" name="email" ><br><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" ><br><br>
+
+                <input type="submit" value="Submit">
+              </form> 
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div style="background-color: rgb(171, 105, 24);padding: 20px;">
+        <form action="/create-category" method="post">
+            {% csrf_token %}
+            <label for="title">Tilte:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <input type="submit" value="Submit">
+          </form> 
+    </div>
+</body>
+</html>

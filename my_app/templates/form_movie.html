@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .error {
+        /* // */
+        color: #f02849;
+        background-color: rgb(224, 223, 223);
+        box-shadow: 4px 4px 10px 1px black;
+        padding: 10px;
+        width: 400px;
+        font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        line-height: 18px;
+        margin-top: 10px;
+        text-align: left
+    }
+</style>
+
+<body>
+    <div style="background-color: rgb(171, 105, 24);padding: 20px;">
+        <form action="/store-movie-on-database" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <label for="title">Tilte:</label><br>
+            <input type="text" id="title" name="title"><br>
+            {% for message in messages %}
+            {% if message.extra_tags == 'title' %}
+            <p class="{{ message.tags }}">{{ message }} </p>
+            {% endif %}
+            {% endfor %}
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
+            <label for="description">Description:</label><br>
+            <input type="text" id="description" name="description"><br><br>
+            <label for="duration">duration:</label><br>
+            <input type="number" id="duration" name="duration"><br><br>
+            <label for="image_file">Image:</label><br>
+            <input type="file" id="image_file" name="image_file"><br><br>
+            <select name="category">
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: rgb(171, 105, 24);padding: 20px;">
+        <form action="/store-actor-on-database" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label><br>
+            <input type="text" id="title" name="name"><br>
+    
+            <label for="age">age:</label><br>
+            <input type="text" id="age" name="age" ><br><br>
+            <input type="submit" value="Submit">
+          </form> 
+    </div>
+</body>
+</html>
