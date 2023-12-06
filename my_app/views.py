@@ -109,3 +109,9 @@ def createUser(request):
             email=request.POST['email'],
             password=password_hash)
         return redirect('/')
+    
+def removeActroFromMovie(request,actor_id,movie_id):
+    movie = Movie.objects.get(id=movie_id)
+    actor = Actor.objects.get(id=actor_id)
+    movie.actors.remove(actor)
+    return redirect('/')

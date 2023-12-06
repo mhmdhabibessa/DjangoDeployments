@@ -12,4 +12,5 @@ urlpatterns = [
     path('add-actor-to-move', views.addActorToMove),	   
     path('create-user-form', views.createuserForm),	   
     path('create_user', views.createUser),	   
+    path('remove-actore-from-movie/<int:actor_id>/<int:movie_id>', views.removeActroFromMovie),	   
 ]

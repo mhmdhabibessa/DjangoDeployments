@@ -64,21 +64,22 @@
             flex-wrap: wrap;
             background-color: rgb(236, 236, 236);
         }
+
         .messages {
-    list-style-type: none;
-    padding: 10px;
-    margin: 0;
-}
+            list-style-type: none;
+            padding: 10px;
+            margin: 0;
+        }
 
-.messages li {
-    margin-bottom: 10px;
-    padding: 10px;
-}
+        .messages li {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
 
-.success {
-    color: green;
-    background-color: lightgreen;
-}
+        .success {
+            color: green;
+            background-color: lightgreen;
+        }
     </style>
 </head>
 
@@ -93,24 +94,35 @@
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
     </ul>
-{% endif %}
+    {% endif %}
     <div class="main-section">
         {% for movie in movies %}
         <div class="card" style=" padding: 10px;">
             <img src="media/{{ movie.image_file }}" alt="Avatar" style="width:100%  ;height: 50%;">
             <div class="container">
                 <h4><b>{{ movie.title }}</b></h4>
-                <span style="font-weight: bold; color: rgb(44, 88, 0); ">{{ movie.category.name  }}</span>
+                <span style="font-weight: bold; color: rgb(44, 88, 0); ">{{ movie.category.name }}</span>
                 <p>{{ movie.description }}</p>
             </div>
             <div>
                 <h3>The Actors in this film:</h3>
                 <ul>
-                    {% for actor in movie.actors.all %} 
-                    <li>{{actor.name}}</li>
+                    {% for actor in movie.actors.all %}
+                    <div style="display: flex; 
+                    padding: 8px;
+                    margin: 4px;
+                    background-color: rgb(253, 125, 125);
+                    border-radius: 10px;
+                    box-shadow: 10px 5px 10px 5px rgb(165, 165, 165);
+                    ">
+                        <li style="color: white;list-style: none;">{{actor.name}}</li>
+                        {% if actor in movie.actors.all %}
+                        <a href="/remove-actore-from-movie/{{actor.id}}/{{movie.id}}">Remove</a>
+                        {% endif %}
+                    </div>
                     {% endfor %}
                 </ul>
             </div>
@@ -132,13 +144,13 @@
             {% for cat in category %}
             <h4>{{cat.name}}</h4>
             <ul>
-                {% for movie in  cat.movies.all %}
+                {% for movie in cat.movies.all %}
                 <li>{{movie.title}}</li>
                 {% endfor %}
             </ul>
             {% endfor %}
         </div>
-      
+
     </div>
 </body>
 
