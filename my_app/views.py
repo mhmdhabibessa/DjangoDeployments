@@ -2,6 +2,8 @@ from django.shortcuts import render ,HttpResponse,redirect
 from .models import Movie,Category,Actor,User,MovieForm
 from django.contrib import messages
 import bcrypt
+from django.http import JsonResponse
+
 # from somewhere import handle_uploaded_file
 
 def upload_movie(request):
@@ -115,3 +117,26 @@ def removeActroFromMovie(request,actor_id,movie_id):
     actor = Actor.objects.get(id=actor_id)
     movie.actors.remove(actor)
     return redirect('/')
+
+def Serach_Request(request):
+    if request.is_ajax():
+        movie = request.POST.get('movie')
+        print(movie)
+        query = Movie.objects.filter(title__icontains=movie)
+        if len(query) > 0 :
+            data = [] 
+            for position in query:
+                Items = {
+                    "PRIMARY_KEY" :position.pk,
+                    "title" : position.title,
+                    "description" : position.description,
+                    "image":str(position.image_file)
+                    
+                }
+                data.append(Items)
+            res = data
+        else:
+            res = 'NO Movie Found....'
+                
+        return JsonResponse({'data': res })
+    return JsonResponse({})

@@ -13,4 +13,6 @@ urlpatterns = [
     path('create-user-form', views.createuserForm),	   
     path('create_user', views.createUser),	   
     path('remove-actore-from-movie/<int:actor_id>/<int:movie_id>', views.removeActroFromMovie),	   
+    path ('search/' , views.Serach_Request), 
+
 ]
