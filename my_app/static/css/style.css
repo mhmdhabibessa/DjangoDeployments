@@ -235,9 +235,14 @@ html {
 	color: #777;
 }
 
-.realted-actor a { 
+img {
+	filter: grayscale(60%);
+}
+
+.realted-actor a {
 	color: #fbfbfb;
 }
+
 .realted-actor {
 	display: flex;
 	justify-content: space-evenly;
@@ -246,4 +251,5 @@ html {
 	margin: 4px;
 	background-color: #642d2d;
 	border-radius: 10px;
-	box-shadow: 18px 0px 30px #5d4545;}
+	box-shadow: 18px 0px 30px #5d4545;
+}
